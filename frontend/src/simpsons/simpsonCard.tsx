@@ -1,6 +1,9 @@
 import Badge from "../components/badge";
+import Link from "next/link";
+
 
 interface Props {
+  id: number;
   name: string;
   occupation: string;
   gender: string;
@@ -11,10 +14,10 @@ interface Props {
   status: string;
 }
 
-export default function CharacterCard({ name, occupation,gender,birthdate,age, phrases, portrait_path, status }: Props) {
-  const CDN_BASE = "https://cdn.thesimpsonsapi.com/500";
-  const fullImageUrl = `${CDN_BASE}${portrait_path}`;
+export default function CharacterCard({ id,name, occupation,gender,birthdate,age, phrases, portrait_path, status }: Props) {
+  const fullImageUrl = `${process.env.NEXT_PUBLIC_CDN_BASE}${portrait_path}`;
   return (
+   <Link href={`/personaje/${id}`}>
     <div className="border border-gray-300 p-4 m-2 max-w-xs rounded-lg shadow-md hover:shadow-amber-400  bg-white">
     
     <img src={fullImageUrl} alt={name} />
@@ -39,7 +42,7 @@ export default function CharacterCard({ name, occupation,gender,birthdate,age, p
             <li key={index} className="text-gray-700 italic text-sm">
               "{frase}" 
             </li>
-          ))  ?? "Sin frases"}
+          )) }
         </ul>
 
       </div>
@@ -49,5 +52,7 @@ export default function CharacterCard({ name, occupation,gender,birthdate,age, p
       </div>
     
     </div>
+    
+          </Link>
   );
 }

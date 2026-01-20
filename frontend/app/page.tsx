@@ -11,8 +11,6 @@ export default function Home() {
   // 1. ESTADO DE LA PÁGINA
   const [page, setPage] = useState(1);
 
-  const API_URL = "https://61a26f5366b9.ngrok-free.app"; 
-
   // Modificamos la función para que acepte la página como argumento
   const conectarConColab = async (paginaSolicitada: number) => {
     try {
@@ -20,7 +18,7 @@ export default function Home() {
       setMensaje(`Cargando página ${paginaSolicitada}...`);
       
       // 2. ENVIAMOS EL PARAMETRO PAGE
-      const respuesta = await axios.get(`${API_URL}/simpsons`, {
+      const respuesta = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/simpsons`, {
         params: { page: paginaSolicitada }, // Axios convierte esto en ?page=X
         headers: { "ngrok-skip-browser-warning": "true" } 
       });

@@ -18,7 +18,7 @@ export default function Home() {
       setMensaje(`Cargando página ${paginaSolicitada}...`);
       
       // 2. ENVIAMOS EL PARAMETRO PAGE
-      const respuesta = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/simpsons`, {
+      const respuesta = await axios.get(`https://790a5e67d892.ngrok-free.app/simpsons`, {
         params: { page: paginaSolicitada }, // Axios convierte esto en ?page=X
         headers: { "ngrok-skip-browser-warning": "true" } 
       });

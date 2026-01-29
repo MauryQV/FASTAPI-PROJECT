@@ -42,7 +42,7 @@ export default function PersonajeDetalle() {
 
     const fetchDetail = async () => {
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/simpsons/${id}`, {
+        const res = await axios.get(`https://790a5e67d892.ngrok-free.app/simpsons/${id}`, {
              headers: { "ngrok-skip-browser-warning": "true" }
         });
         setPersonaje(res.data);
